@@ -1,6 +1,6 @@
 {
   "name": "lab1",
-  "homepage":"https://belalmuhammed.github.io/First-React-Project/",
+  "homepage": "https://belalmuhammed.github.io/First-React-Project/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,15 +9,17 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy":"npm run build",
-    "deplopy":"gh-page -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.10.0",
     "bootstrap": "^5.3.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.60.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {

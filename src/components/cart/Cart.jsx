@@ -1,9 +1,13 @@
 import React from 'react';
 import { useCart } from '../../contexts/Cart';
+import { useSelector, useDispatch } from 'react-redux'
+import { addToCart, removeFromCart, clearCart } from '../../Store/slices/cartSlice'
 import './Cart.css'
 function Cart() {
-  const { cartItems, removeFromCart, clearCart, addToCart } = useCart();
+  // const { cartItems, removeFromCart, clearCart, addToCart } = useCart();
 
+  const cartItems = useSelector((state) => state.cart.cartItems)
+const dispatch = useDispatch()
   const filteredItems = cartItems.filter(item => item && item.count >= 1);
 console.log(cartItems);
 
@@ -12,8 +16,10 @@ console.log(cartItems);
  
       <div className='d-flex justify-content-between align-items-center my-4'>
  <h2>Your Cart</h2>
-           <button className="btn btn-danger " onClick={clearCart}>
-            Clear Cart
+           <button className="btn btn-danger "
+                               onClick={() => dispatch(clearCart())}
+
+>            Clear Cart
           </button>
       </div>
      
@@ -47,14 +53,14 @@ console.log(cartItems);
                 <div className="d-flex align-items-center gap-2">
                   <button
                     className="btn btn-outline-secondary"
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() =>dispatch(removeFromCart(item.id))}
                   >
                     -
                   </button>
                   <span>{item.count}</span>
                   <button
                     className="btn btn-outline-primary"
-                    onClick={() => addToCart(item)}
+                    onClick={() => dispatch(addToCart(item))}
                   >
                     +
                   </button>
